@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <!--Bootstrap CSS, Font Awesome, My Own CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link rel="stylesheet" href="assets/style.css"/>
     <title>Weather Dashboard</title>
 </head>
 <body>
+
     <div class="flex-row align-center justify-center min-100-vh bg-primary">
         <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
           <h1 class="text-primary">Weather Dashboard</h1>
           <h4>Search for a City:</h4>
           <form id="search-form" class="form w-100">
-            <input id="search-input" class="form-input col-md-10" type="text" placeholder="Enter a city to search...">
+            <input id="search-input" class="inputValue form-input col-md-10" type="text" placeholder="Enter a city to search...">
             <button class="searchBtn col-md-1"><i class="fas fa-search"></i></button>
           </form>
         </div>
-      </div>
+
+        <div class="display">
+            <h1 class="cityName"></h1>
+            <p class="desc"></p>
+            <p class="temp"></p>
+        </div>
+    </div>
+    <!--jQuery JS and My Own JS-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="assets/index.js"></script>
 </body>
 </html>

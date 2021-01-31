@@ -23,19 +23,20 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast 
 - past searches are saved to the local storage and displayed, even when the page is refreshed */
+var button = document.querySelector('.searchBtn');
+var inputValue = document.querySelector('.inputValue');
+console.log(inputValue);
+var cityName = document.querySelector('.cityName')
+var desc = document.querySelector('.desc')
+var temp = document.querySelector('.temp')
 
-fetch('api.openweathermap.org/data/2.5/weather?q={city name}&appid=e6ba2c290e501b458abfcf542542980c', {
-  method: 'GET', //GET is the default.
-  credentials: 'same-origin', // include, *same-origin, omit
-  redirect: 'follow', // manual, *follow, error
-})
+fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid=e6ba2c290e501b458abfcf542542980c')
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
   });
-
 
 
 

@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form{
+    border-radius: 10px;
+}
+
+button{
+    border-radius: 10px;
+}
+
+.display{
+    text-align: center;
+}
