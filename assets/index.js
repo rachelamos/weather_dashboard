@@ -5,10 +5,8 @@ console.log(inputValue);
 var cityName = document.querySelector('.cityName')
 var desc = document.querySelector('.desc')
 var temp = document.querySelector('.temp')
+var forecast = 
 // Fetch information on city from OpenWeather API
-// function searchCity(event) {
-//     event.preventDefault();
-// }
 
 button.addEventListener('click', function(event){
     event.preventDefault();
@@ -22,6 +20,7 @@ button.addEventListener('click', function(event){
     });
 });
     // Current Weather
+
     // Future Five Day forecast
 // Dynamically Append to HTML
 // Save to Local Storage
