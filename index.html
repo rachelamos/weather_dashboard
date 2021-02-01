@@ -10,17 +10,22 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
+    <header>Weather Dashboard</header>
 
-    <div class="flex-row align-center justify-center min-100-vh bg-primary">
-        <div class="col-12 col-md-9 flex-column align-center bg-light p-5">
-          <h1 class="text-primary">Weather Dashboard</h1>
-          <h4>Search for a City:</h4>
-          <form id="search-form" class="form w-100">
-            <input id="search-input" class="inputValue form-input col-md-10" type="text" placeholder="Enter a city to search...">
-            <button class="searchBtn col-md-1"><i class="fas fa-search"></i></button>
-          </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <p>Search for a City:</p>
+                        <form class="d-flex w-100">
+                            <input class="inputValue form-input" type="text" placeholder="Enter a city to search...">
+                            <button class="searchBtn col-md-1" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
         <div class="display">
             <h1 class="cityName"></h1>
             <p class="desc"></p>
