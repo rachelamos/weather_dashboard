@@ -33,6 +33,7 @@ var temp = document.querySelector('.temp')
 button.addEventListener('click', function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue+'&appid=e6ba2c290e501b458abfcf542542980c')
     .then(function (response) {
+      console.log(response);
       return response.json();
     })
     .then(function (data) {
