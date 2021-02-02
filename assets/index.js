@@ -67,16 +67,25 @@ function forecast (lat, lon){
   })
   .then(function (data) {
     console.log(data);
-    // var newDate1 = new Date(data.)
-    // day1.textContent = "" + data.daily[0].dt;
+    // var newDate1 = new Date(data.daily[1].dt).toLocaleDateString('en-US');
+    // console.log(newDate1);
+    // date1.textContent = newDate1;
     temp1.textContent = "Temp: " + data.daily[1].temp.day + "°F";
     humidity1.textContent = "Humidity: " + data.daily[1].humidity + "%";
+    // var newDate2 = new Date(data.daily[2].dt).toLocaleDateString('en-US');
+    // date2.textContent = newDate2;
     temp2.textContent = "Temp: " + data.daily[2].temp.day + "°F";
     humidity2.textContent = "Humidity: " + data.daily[2].humidity + "%";
+    // var newDate3 = new Date(data.daily[3].dt).toLocaleDateString('en-US');
+    // date3.textContent = newDate3;
     temp3.textContent = "Temp: " + data.daily[3].temp.day + "°F";
     humidity3.textContent = "Humidity: " + data.daily[3].humidity + "%";
+    // var newDate4 = new Date(data.daily[4].dt).toLocaleDateString('en-US');
+    // date4.textContent = newDate4;
     temp4.textContent = "Temp: " + data.daily[4].temp.day + "°F";
     humidity4.textContent = "Humidity: " + data.daily[4].humidity + "%";
+    // var newDate5 = new Date(data.daily[5].dt).toLocaleDateString('en-US');
+    // date5.textContent = newDate5;
     temp5.textContent = "Temp: " + data.daily[5].temp.day + "°F";
     humidity5.textContent = "Humidity: " + data.daily[5].humidity + "%";
   })
