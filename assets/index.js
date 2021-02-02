@@ -8,6 +8,7 @@ var temp = document.querySelector('.temp');
 var humidity = document.querySelector('.humidity');
 var windSpeed = document.querySelector('.windSpeed');
 var uvIndex = document.querySelector('.uvIndex');
+
 // Fetch information on city from OpenWeather API
 
 function firstAPI (event){
@@ -39,10 +40,24 @@ function uvFunction (lat, lon){
   .then(function (data) {
     console.log(data);
     uvIndex.textContent = "UV Index: " + data.current.uvi;
+    forecast(lat, lon);
   })
 };
 
-button.addEventListener('click', firstAPI);
+function forecast (lat, lon){
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=alerts,minutely,hourly,&appid=e6ba2c290e501b458abfcf542542980c')
+  .then(function (response){
+    console.log(response);
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    
+    // uvIndex.textContent = "UV Index: " + data.current.uvi;
+  })
+};
+
+button.addEventListener('click', firstAPI, forecast);
 
     // Current Weather
     // Future Five Day forecast
