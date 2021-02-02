@@ -8,14 +8,19 @@ var temp = document.querySelector('.temp');
 var humidity = document.querySelector('.humidity');
 var windSpeed = document.querySelector('.windSpeed');
 var uvIndex = document.querySelector('.uvIndex');
+var date1 = document.querySelector('.date1');
 var temp1 = document.querySelector('.temp1');
 var humidity1 = document.querySelector('.humidity1');
+var date2 = document.querySelector('.date2');
 var temp2 = document.querySelector('.temp2');
 var humidity2 = document.querySelector('.humidity2');
+var date3 = document.querySelector('.date3');
 var temp3 = document.querySelector('.temp3');
 var humidity3 = document.querySelector('.humidity3');
+var date4 = document.querySelector('.date4');
 var temp4 = document.querySelector('.temp4');
 var humidity4 = document.querySelector('.humidity4');
+var date5 = document.querySelector('.date5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
 
@@ -62,6 +67,7 @@ function forecast (lat, lon){
   })
   .then(function (data) {
     console.log(data);
+    // var newDate1 = new Date(data.)
     // day1.textContent = "" + data.daily[0].dt;
     temp1.textContent = "Temp: " + data.daily[1].temp.day + "°F";
     humidity1.textContent = "Humidity: " + data.daily[1].humidity + "%";
