@@ -8,6 +8,11 @@ var temp = document.querySelector('.temp');
 var humidity = document.querySelector('.humidity');
 var windSpeed = document.querySelector('.windSpeed');
 var uvIndex = document.querySelector('.uvIndex');
+var temp1 = document.querySelector('.temp1');
+var humidity1 = document.querySelector('.humidity1');
+var day3 = document.querySelector('.day3');
+var day4 = document.querySelector('.day4');
+var day5 = document.querySelector('.day5');
 
 // Fetch information on city from OpenWeather API
 
@@ -52,8 +57,9 @@ function forecast (lat, lon){
   })
   .then(function (data) {
     console.log(data);
-    
-    // uvIndex.textContent = "UV Index: " + data.current.uvi;
+    // day1.textContent = "" + data.daily[0].dt;
+    temp1.textContent = "Temp: " + data.daily[1].temp.day + "°F";
+    humidity1.textContent = "Humidity: " + data.daily[1].humidity + "%";
   })
 };
 

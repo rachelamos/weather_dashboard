@@ -23,3 +23,7 @@ header {
     padding: 10px;
 }
 
+.card-group {
+    display: flex;
+}
+
