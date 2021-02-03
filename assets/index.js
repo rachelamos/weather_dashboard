@@ -29,7 +29,7 @@ var date5 = document.querySelector('.date5');
 var icon5 = document.querySelector('.icon5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
-var stylesheet = document.styleSheets[6];
+// var stylesheet = document.styleSheets[6];
 
 // Fetch information on city from OpenWeather API
 
@@ -65,12 +65,13 @@ function uvFunction (lat, lon){
   .then(function (data) {
     console.log(data);
     uvIndex.textContent = "UV Index: " + data.current.uvi;
-    if (uvIndex.textContent < 3) {
-      stylesheet.cssRules[6].style.backgroundColor="green";
-    } else if (uvIndex.textContent >= 3 && uvIndex.textContent < 6) {
-    stylesheet.cssRules[6].style.backgroundColor="yellow";
+    console.log(typeof data.current.uvi);
+    if (data.current.uvi < 3) {
+      uvIndex.setAttribute('style', 'background-color:green;');
+    } else if (data.current.uvi >= 3 && data.current.uvi < 6) {
+      uvIndex.setAttribute('style', 'background-color:yellow;');
       } else {
-        stylesheet.cssRules[6].style.backgroundColor="red";
+        uvIndex.setAttribute('style', 'background-color:red;');
           }
     forecast(lat, lon);
   })
