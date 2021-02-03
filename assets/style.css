@@ -25,5 +25,11 @@ header {
 .day1, .day2, .day3, .day4, .day5 {
     background: dodgerblue;
     color: white;
+    /* padding: 5px; */
+    text-align: center;
+}
+
+.uvIndex {
+    background-color: white;
 }
 

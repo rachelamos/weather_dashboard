@@ -4,26 +4,32 @@ var inputValue = document.querySelector('.inputValue');
 // console.log(inputValue);
 var cityName = document.querySelector('.cityName');
 // var date = document.querySelector('.cityName');
-// var weatherIcon = "";
+var weatherIcon = document.querySelector('.weatherIcon');
 var temp = document.querySelector('.temp');
 var humidity = document.querySelector('.humidity');
 var windSpeed = document.querySelector('.windSpeed');
 var uvIndex = document.querySelector('.uvIndex');
 var date1 = document.querySelector('.date1');
+var icon1 = document.querySelector('.icon1');
 var temp1 = document.querySelector('.temp1');
 var humidity1 = document.querySelector('.humidity1');
 var date2 = document.querySelector('.date2');
+var icon2 = document.querySelector('.icon2');
 var temp2 = document.querySelector('.temp2');
 var humidity2 = document.querySelector('.humidity2');
 var date3 = document.querySelector('.date3');
+var icon3 = document.querySelector('.icon3');
 var temp3 = document.querySelector('.temp3');
 var humidity3 = document.querySelector('.humidity3');
 var date4 = document.querySelector('.date4');
+var icon4 = document.querySelector('.icon4');
 var temp4 = document.querySelector('.temp4');
 var humidity4 = document.querySelector('.humidity4');
 var date5 = document.querySelector('.date5');
+var icon5 = document.querySelector('.icon5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
+var stylesheet = document.styleSheets[6];
 
 // Fetch information on city from OpenWeather API
 
@@ -38,10 +44,8 @@ function firstAPI (event){
       console.log(data);
       var date = new Date(data.dt*1000).toLocaleDateString('en-US');
       console.log(date);
-      var weatherIcon = document.getElementById('.weatherIcon').src = "http://openweathermap.org/img/wn/" + data.weather[0].icon +"@2x.png";
       weatherIcon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon +"@2x.png";
-      console.log(document.getElementById('.weatherIcon').src);
-      cityName.textContent = data.name + " (" + date + ")" + " " + weatherIcon;
+      cityName.textContent = data.name + " (" + date + ")";
       temp.textContent = "Temperature: " + data.main.temp + "°F";
       humidity.textContent = "Humidity: " + data.main.humidity + "%";
       windSpeed.textContent = "Wind Speed: " + data.wind.speed;
@@ -61,6 +65,13 @@ function uvFunction (lat, lon){
   .then(function (data) {
     console.log(data);
     uvIndex.textContent = "UV Index: " + data.current.uvi;
+    if (uvIndex.textContent < 3) {
+      stylesheet.cssRules[6].style.backgroundColor="green";
+    } else if (uvIndex.textContent >= 3 && uvIndex.textContent < 6) {
+    stylesheet.cssRules[6].style.backgroundColor="yellow";
+      } else {
+        stylesheet.cssRules[6].style.backgroundColor="red";
+          }
     forecast(lat, lon);
   })
 };
@@ -76,22 +87,27 @@ function forecast (lat, lon){
     var newDate1 = new Date(data.daily[1].dt*1000).toLocaleDateString('en-US');
     console.log(newDate1);
     date1.textContent = newDate1;
+    icon1.src = "http://openweathermap.org/img/wn/" + data.daily[1].weather[0].icon +"@2x.png";
     temp1.textContent = "Temp: " + data.daily[1].temp.day + "°F";
     humidity1.textContent = "Humidity: " + data.daily[1].humidity + "%";
     var newDate2 = new Date(data.daily[2].dt*1000).toLocaleDateString('en-US');
     date2.textContent = newDate2;
+    icon2.src = "http://openweathermap.org/img/wn/" + data.daily[2].weather[0].icon +"@2x.png";
     temp2.textContent = "Temp: " + data.daily[2].temp.day + "°F";
     humidity2.textContent = "Humidity: " + data.daily[2].humidity + "%";
     var newDate3 = new Date(data.daily[3].dt*1000).toLocaleDateString('en-US');
     date3.textContent = newDate3;
+    icon3.src = "http://openweathermap.org/img/wn/" + data.daily[3].weather[0].icon +"@2x.png";
     temp3.textContent = "Temp: " + data.daily[3].temp.day + "°F";
     humidity3.textContent = "Humidity: " + data.daily[3].humidity + "%";
     var newDate4 = new Date(data.daily[4].dt*1000).toLocaleDateString('en-US');
     date4.textContent = newDate4;
+    icon4.src = "http://openweathermap.org/img/wn/" + data.daily[4].weather[0].icon +"@2x.png";
     temp4.textContent = "Temp: " + data.daily[4].temp.day + "°F";
     humidity4.textContent = "Humidity: " + data.daily[4].humidity + "%";
     var newDate5 = new Date(data.daily[5].dt*1000).toLocaleDateString('en-US');
     date5.textContent = newDate5;
+    icon5.src = "http://openweathermap.org/img/wn/" + data.daily[5].weather[0].icon +"@2x.png";
     temp5.textContent = "Temp: " + data.daily[5].temp.day + "°F";
     humidity5.textContent = "Humidity: " + data.daily[5].humidity + "%";
   })
