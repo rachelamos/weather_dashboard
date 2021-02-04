@@ -28,7 +28,7 @@ var date5 = document.querySelector('.date5');
 var icon5 = document.querySelector('.icon5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
-var citySearch = "";
+var searchCity = [];
 var prevSearch = document.querySelector('.prevSearch');
 
 // Fetch information on city from OpenWeather API
@@ -54,7 +54,9 @@ function firstAPI (event){
       var lat = data.coord.lat;
       var lon = data.coord.lon;
       uvFunction(lat, lon);
-      localStorage.setItem("currentWeather", JSON.stringify(inputValue.value));
+      searchCity.push(inputValue.value);
+      console.log(searchCity);
+      localStorage.setItem("currentWeather", JSON.stringify(searchCity));
     })
 
 };
@@ -122,13 +124,20 @@ function forecast (lat, lon){
 button.addEventListener('click', firstAPI, forecast);
 
 function init() {
-   var pastSearches = localStorage.getItem("currentWeather");
-   if (pastSearches === null) {
-     citySearch = "";
-   }  else {
-     citySearch = pastSearches;
+   var pastSearches = JSON.parse(localStorage.getItem("currentWeather"));
+   console.log(pastSearches);
+   for(var i=0; i < pastSearches.length; i++){
+    var p = document.createElement("p");
+    p.textContent = pastSearches[i];
+    prevSearch.prepend(p);
+    console.log(p.textContent);
    }
-   prevSearch.textContent = pastSearches;
+  //  if (pastSearches === null) {
+  //    searchCity = "";
+  //  }  else {
+  //    citySearch = pastSearches;
+  //  }
+  //  prevSearch.textContent = pastSearches;
 }
 
 init ();
