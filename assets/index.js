@@ -29,7 +29,7 @@ var icon5 = document.querySelector('.icon5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
 var citySearch = "";
-var prevSearch = "";
+var prevSearch = document.querySelector('.prevSearch');
 
 // Fetch information on city from OpenWeather API
 
