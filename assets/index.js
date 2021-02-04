@@ -3,7 +3,6 @@ var button = document.querySelector('.searchBtn');
 var inputValue = document.querySelector('.inputValue');
 // console.log(inputValue);
 var cityName = document.querySelector('.cityName');
-// var date = document.querySelector('.cityName');
 var weatherIcon = document.querySelector('.weatherIcon');
 var temp = document.querySelector('.temp');
 var humidity = document.querySelector('.humidity');
@@ -29,7 +28,8 @@ var date5 = document.querySelector('.date5');
 var icon5 = document.querySelector('.icon5');
 var temp5 = document.querySelector('.temp5');
 var humidity5 = document.querySelector('.humidity5');
-// var stylesheet = document.styleSheets[6];
+var citySearch = "";
+var prevSearch = "";
 
 // Fetch information on city from OpenWeather API
 
@@ -44,14 +44,17 @@ function firstAPI (event){
       console.log(data);
       var date = new Date(data.dt*1000).toLocaleDateString('en-US');
       console.log(date);
+      localStorage.setItem
       weatherIcon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon +"@2x.png";
       cityName.textContent = data.name + " (" + date + ")";
+      console.log(data.name);
       temp.textContent = "Temperature: " + data.main.temp + "°F";
       humidity.textContent = "Humidity: " + data.main.humidity + "%";
       windSpeed.textContent = "Wind Speed: " + data.wind.speed;
       var lat = data.coord.lat;
       var lon = data.coord.lon;
       uvFunction(lat, lon);
+      localStorage.setItem("currentWeather", JSON.stringify(inputValue.value));
     })
 
 };
@@ -74,6 +77,8 @@ function uvFunction (lat, lon){
         uvIndex.setAttribute('style', 'background-color:red;');
           }
     forecast(lat, lon);
+    document.querySelector('.forecast').hidden = false;
+    document.querySelector('.card-deck').hidden = false;
   })
 };
 
@@ -115,6 +120,29 @@ function forecast (lat, lon){
 };
 
 button.addEventListener('click', firstAPI, forecast);
+
+function init() {
+   var pastSearches = localStorage.getItem("currentWeather");
+   if (pastSearches === null) {
+     citySearch = "";
+   }  else {
+     citySearch = pastSearches;
+   }
+   prevSearch.textContent = pastSearches;
+}
+
+init ();
+
+// function addPrevSearch (){
+//   for(var i =0; i <prevSearch.length; i++){
+//     var prevSearches = document.createElement("button");
+//     var space = document.createElement("br");
+//     prevSearches.setAttribute("class", "btn");
+//     prevSearches.textContent = prevSearch[i];
+//     prevSearchCol.append(prevSearches);
+//     prevSearchCol.append(space);
+//   }
+// }
 
     // Current Weather
     // Future Five Day forecast
